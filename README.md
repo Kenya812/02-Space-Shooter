@@ -15,4 +15,4 @@ Jason Francis Project 2-Arcade Space Shooter
 No Future Development
 
 ## Created by
-Jania WOods
+Jania Woods
