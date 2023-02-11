@@ -3,6 +3,7 @@ extends Node
 var VP = Vector2.ZERO
 var score = 0
 var lives = 5
+var time = 0
 
 
 func _ready():
@@ -15,10 +16,20 @@ func _ready():
 func reset():
 	score = 0
 	lives = 5
+	time = 30
 
-func _unhandled_input(_event):
-	if Input.is_action_pressed("Quit"):
-		get_tree().quit()
+func _unhandled_input(event):
+	if event.is_action_pressed("Quit"):
+		var Pause_Menu = get_node_or_null("/root/Game/UI/Pause_Menu")
+		if Pause_Menu == null:
+			get_tree().quit()
+		else:
+			if Pause_Menu.visible:
+				Pause_Menu.hide()
+				get_tree().paused = false
+			else:
+				Pause_Menu.show()
+				get_tree().paused = true
 
 func _resize():
 	VP = get_viewport().size

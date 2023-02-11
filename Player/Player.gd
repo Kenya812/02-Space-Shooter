@@ -27,12 +27,12 @@ func _physics_process(_delta):
 func get_input():
 	var dir = Vector2.ZERO
 	$Exhaust.hide()
-	if Input.is_action_just_pressed("Up"):
+	if Input.is_action_pressed("Up"):
 		$Exhaust.show()
 		dir += Vector2(0,-1)
-	if Input.is_action_just_pressed("Left"):
+	if Input.is_action_pressed("Left"):
 		rotation_degrees -= rot_speed
-	if Input.is_action_just_pressed("Right"):
+	if Input.is_action_pressed("Right"):
 		rotation_degrees += rot_speed
 	if Input.is_action_just_pressed("Shoot"):
 		Shoot()
@@ -52,7 +52,7 @@ func damage(d):
 	if health <= 0:
 		Effects = get_node_or_null("/root/Game/Effects")
 		if Effects != null:
-			var explosion = Explosion.instances()
+			var explosion = Explosion.instance()
 			explosion.global_position = global_position
 			Effects.add_child(explosion)
 		Global.update_lives(-1)
