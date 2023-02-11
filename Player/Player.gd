@@ -7,9 +7,10 @@ var rot_speed = 20.0
 
 var nose = Vector2(0,-60)
 
-var health = 100
+var health = 10
 
 onready var Bullet = load("res://Player/Bullet.tscn")
+onready var Explosion = load("res://Effects/Explosion.tscn")
 var Effects = null
 
 func _ready():
@@ -49,6 +50,12 @@ func Shoot():
 func damage(d):
 	health -= d
 	if health <= 0:
+		Effects = get_node_or_null("/root/Game/Effects")
+		if Effects != null:
+			var explosion = Explosion.instances()
+			explosion.global_position = global_position
+			Effects.add_child(explosion)
+		Global.update_lives(-1)
 		queue_free()
 
 
