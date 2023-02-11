@@ -3,7 +3,7 @@ extends KinematicBody2D
 var velocity = Vector2.ZERO
 var speed = 10.0
 var max_speed = 400.0
-var rot_speed = 20.0
+var rot_speed = 11.0
 
 var nose = Vector2(0,-60)
 
